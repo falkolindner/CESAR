@@ -1,0 +1,20 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true,
+      "package": "Agentforce Case Intelligence",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.2.0.NEXT"
+    }
+  ],
+  "name": "Agentforce Case Intelligence",
+  "namespace": "",
+  "sfdxNamespace": "sfdx",
+  "sourceApiVersion": "61.0",
+  "packageAliases": {
+    "Agentforce Case Intelligence": "0HoKB000000GmaY0AS",
+    "Agentforce Case Intelligence@0.1.0-2": "04tKB000000xXeRYAU",
+    "Agentforce Case Intelligence@0.2.0-1": "04tKB000000xXegYAE"
+  }
+}

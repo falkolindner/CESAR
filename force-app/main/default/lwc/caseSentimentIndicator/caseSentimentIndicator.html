@@ -1,0 +1,20 @@
+<template>
+    <!-- Der Container erhält dynamisch die Farb-Klasse basierend auf dem Sentiment -->
+    <div class={containerClass}>
+        <div class="content-wrapper">
+            <!-- Icon -->
+            <lightning-icon 
+                icon-name={iconName} 
+                size="medium" 
+                variant="inverse"
+                class="slds-m-right_small icon-shadow">
+            </lightning-icon>
+            
+            <!-- Text -->
+            <div class="text-content">
+                <p class="label">Customer Sentiment</p>
+                <h3 class="value">{sentimentDisplay}</h3>
+            </div>
+        </div>
+    </div>
+</template>

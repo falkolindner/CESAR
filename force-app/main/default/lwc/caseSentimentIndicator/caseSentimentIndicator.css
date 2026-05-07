@@ -1,0 +1,64 @@
+:host {
+    display: block;
+    --card-radius: 12px;
+}
+
+.indicator-container {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--card-radius);
+    color: white;
+    /* Weicher Schatten für Tiefe */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    /* Leichter weißer Rand für "Glassmorphism" Effekt */
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-shadow {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.9;
+    letter-spacing: 0.05em;
+}
+
+.value {
+    font-size: 1.1rem; /* Etwas größer für bessere Lesbarkeit */
+    font-weight: 800;
+    text-transform: capitalize;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* --- Modern Gradients (Die "Sexyness") --- */
+
+.bg-neutral {
+    background: linear-gradient(135deg, #94a3b8 0%, #475569 100%); /* Slate Grey */
+}
+
+.bg-success {
+    background: linear-gradient(135deg, #10b981 0%, #047857 100%); /* Emerald Green */
+}
+
+.bg-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%); /* Amber / Orange */
+}
+
+.bg-error {
+    background: linear-gradient(135deg, #ef4444 0%, #991b1b 100%); /* Red */
+}

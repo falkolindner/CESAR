@@ -1,0 +1,9 @@
+{
+  "orgName": "GenAI Packaging Org",
+  "edition": "Enterprise",
+  "features": [
+    "EinsteinGPT",
+    "Copilot",
+    "PromptBuilder"
+  ]
+}

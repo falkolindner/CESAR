@@ -1,0 +1,102 @@
+/* Container Design (Die "Karte") */
+.modern-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    overflow: hidden; /* Damit die Header-Ecken rund bleiben */
+}
+
+/* Header mit leichtem Verlauf */
+.modern-header {
+    background: linear-gradient(to right, #f8fafc, #ffffff);
+    border-bottom: 1px solid #f1f5f9;
+    padding: 1rem;
+}
+
+/* AI Vorschlags-Box (Der "Hero" Bereich) */
+.ai-suggestion-box {
+    background: #f8fafc; /* Sehr helles Grau/Blau */
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #6366f1; /* Indigo Akzent */
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.ai-suggestion-box:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Begründungs-Text */
+.reasoning-text {
+    font-size: 0.85rem;
+    color: #475569;
+    font-style: italic;
+    line-height: 1.5;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 1rem;
+}
+
+/* Labels (Uppercase, klein, fett) */
+.field-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #94a3b8; /* Slate-400 */
+    margin-bottom: 0.25rem;
+}
+
+.field-value {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1e293b; /* Slate-800 */
+}
+
+/* --- Custom Badges (Die "Pillen") --- */
+.custom-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px; /* Pill Shape */
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+/* Farbvarianten passend zum React Mock */
+.badge-neutral {
+    background-color: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+}
+
+.badge-success { /* Positive */
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.badge-warning { /* Frustrated */
+    background-color: #ffedd5;
+    color: #9a3412;
+    border: 1px solid #fed7aa;
+}
+
+.badge-error { /* Angry */
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/* Button Styling Override */
+.action-button {
+    margin-top: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2); /* Indigo Shadow */
+}

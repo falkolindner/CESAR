@@ -1,0 +1,119 @@
+<template>
+    <!-- Wir nutzen card nicht mehr, sondern bauen unseren eigenen Container -->
+    <div class="modern-card">
+        
+        <!-- Custom Header -->
+        <div class="modern-header slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+            <div class="slds-flex slds-grid_vertical-align-center">
+                <lightning-icon icon-name="standard:einstein_replies" size="small" class="slds-m-right_small"></lightning-icon>
+                <div>
+                    <h2 class="slds-text-heading_small slds-text-title_bold">Agentforce Intelligence</h2>
+                    <div class="slds-flex slds-grid_vertical-align-center slds-text-body_small slds-text-color_weak slds-m-top_xxx-small">
+                        <lightning-icon icon-name="utility:email" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                        <span>Analyzing {emailCount} Emails</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trust Badge rechts oben -->
+            <div class="slds-badge slds-theme_success slds-p-horizontal_small">
+                <lightning-icon icon-name="utility:shield" size="xx-small" variant="inverse" class="slds-m-right_xx-small"></lightning-icon>
+                Trust Layer Active
+            </div>
+        </div>
+
+        <div class="slds-p-around_medium">
+            <lightning-tabset variant="scoped">
+                <!-- Cockpit Tab -->
+                <lightning-tab label="Cockpit">
+                    <div class="slds-m-top_medium">
+                        
+                        <!-- Loading -->
+                        <template if:true={isLoading}>
+                            <div class="slds-align_absolute-center slds-p-around_large">
+                                <lightning-spinner alternative-text="Thinking..." size="medium" variant="brand"></lightning-spinner>
+                                <p class="slds-m-top_large slds-text-heading_small slds-text-color_weak">Agentforce is analyzing...</p>
+                            </div>
+                        </template>
+
+                        <!-- Content -->
+                        <template if:false={isLoading}>
+                            <template if:true={suggestion}>
+                                <div class="ai-suggestion-box">
+                                    <div class="slds-flex slds-grid_vertical-align-center slds-m-bottom_small">
+                                        <lightning-icon icon-name="utility:magicwand" size="x-small" style="--sds-c-icon-color-foreground-default: #4f46e5;" class="slds-m-right_x-small"></lightning-icon>
+                                        <h2 class="slds-text-title_bold" style="color: #4f46e5; letter-spacing: 0.05em;">AI RECOMMENDATION</h2>
+                                    </div>
+                                    
+                                    <div class="reasoning-text">
+                                        "{suggestion.explanation}"
+                                    </div>
+
+                                    <div class="slds-grid slds-wrap slds-gutters_small">
+                                        <!-- Priority -->
+                                        <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
+                                            <p class="field-label slds-text-title_bold">Priority</p>
+                                            <span class="field-value">{suggestion.priority}</span>
+                                        </div>
+                                        <!-- Sentiment (mit Custom Badge) -->
+                                        <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
+                                            <p class="field-label slds-text-title_bold">Sentiment</p>
+                                            <span class={suggestion.sentimentClass}>{suggestion.sentiment}</span>
+                                        </div>
+                                        <!-- Type -->
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <p class="field-label slds-text-title_bold">Type</p>
+                                            <span class="field-value">{suggestion.type}</span>
+                                        </div>
+                                        <!-- Sub-Type -->
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <p class="field-label slds-text-title_bold">Sub-Type</p>
+                                            <span class="field-value">{suggestion.subType}</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Zentrierter Button Container mit Abstand nach oben -->
+                                    <div class="slds-text-align_center slds-m-top_medium">
+                                        <lightning-button 
+                                            variant="brand" 
+                                            label="Apply Changes" 
+                                            onclick={handleApply} 
+                                            class="action-button"
+                                            loading={isSaving}>
+                                        </lightning-button>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <template if:false={suggestion}>
+                                <div class="slds-text-align_center slds-p-around_large">
+                                    <lightning-icon icon-name="utility:check" size="large" class="slds-m-bottom_medium slds-icon-text-light"></lightning-icon>
+                                    <p class="slds-text-heading_small slds-text-color_weak">Analysis up to date.</p>
+                                    <lightning-button label="Re-Analyze" variant="neutral" onclick={triggerAnalysis} class="slds-m-top_medium"></lightning-button>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                </lightning-tab>
+
+                <lightning-tab label="Audit Log">
+                    <div class="slds-p-top_small" style="height: 300px;">
+                        <template if:true={hasLogs}>
+                            <lightning-datatable
+                                key-field="Id"
+                                data={logs}
+                                columns={logColumns}
+                                hide-checkbox-column>
+                            </lightning-datatable>
+                        </template>
+                        <template if:false={hasLogs}>
+                            <div class="slds-illustration slds-illustration_small">
+                                <p class="slds-text-color_weak">No audit logs found.</p>
+                            </div>
+                        </template>
+                    </div>
+                </lightning-tab>
+            </lightning-tabset>
+        </div>
+    </div>
+</template>

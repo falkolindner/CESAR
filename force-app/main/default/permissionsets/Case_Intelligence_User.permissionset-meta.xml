@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Erlaubt Nutzern den Zugriff auf die Case Intelligence LWC und das Schreiben von Audit-Logs.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Case Intelligence User</label>
+    
+    <!-- 1. Apex Klassen Zugriff -->
+    <classAccesses>
+        <apexClass>CaseAIController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+
+    <!-- 2. Objekt-Zugriff ENTFERNT 
+         Um Packaging-Fehler bei Master-Detail-Beziehungen zu vermeiden, 
+         werden hier keine Objekt-Berechtigungen definiert. 
+         Der Admin der Ziel-Org muss sicherstellen, dass Nutzer Zugriff auf Case_AI_Log__c haben. -->
+
+    <!-- 3. Feld-Berechtigungen (FLS) -->
+    
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case_AI_Log__c.Analysis_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case_AI_Log__c.Applied__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case_AI_Log__c.Reasoning__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case_AI_Log__c.Sentiment__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    
+    <!-- Die neuen Felder für die Suggested Values -->
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case_AI_Log__c.Suggested_Priority__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case_AI_Log__c.Suggested_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case_AI_Log__c.Suggested_Subtype__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+
+    <!-- 4. Case Custom Fields -->
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.AI_Sentiment__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+</PermissionSet>
