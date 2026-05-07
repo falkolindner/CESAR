@@ -32,8 +32,8 @@ If AI assets are not active or available in the target org, the dashboard still 
 - `force-app/main/default/lwc/caseIntelligenceDashboard`: recommendation cockpit UI.
 - `force-app/main/default/lwc/caseSentimentIndicator`: sentiment badge UI.
 - `force-app/main/default/classes/CaseAIController.cls`: server-side orchestration.
-- `force-app/main/default/flows/Agentforce_Case_Classifier.flow-meta.xml`: classifier flow.
-- `force-app/main/default/genAiPromptTemplates/*`: prompt templates used by the AI flow.
+- `force-app/main/default/*`: Core package metadata (LWC/Apex/objects/permissions).
+- `force-app-ai/main/default/*`: AI package metadata (Flow + Prompt templates).
 - `force-app/main/default/objects/Case_AI_Log__c`: audit log object and fields.
 - `force-app/main/default/permissionsets/Case_Intelligence_User.permissionset-meta.xml`: baseline permissions.
 
@@ -66,11 +66,43 @@ Assign permissions:
 sf org assign permset --name Case_Intelligence_User --target-org my-org
 ```
 
+## Create Install URLs (Unlocked Packages)
+
+Create packages once (Dev Hub):
+
+```bash
+sf package create --name "Case Intelligence Core" --package-type Unlocked --path force-app --target-dev-hub MyDevHub
+sf package create --name "Case Intelligence AI" --package-type Unlocked --path force-app-ai --target-dev-hub MyDevHub
+```
+
+Create and promote versions:
+
+```bash
+sf package version create --package "Case Intelligence Core" --installation-key-bypass --wait 60 --target-dev-hub MyDevHub
+sf package version promote --package 04tCOREVERSIONID --target-dev-hub MyDevHub --no-prompt
+
+sf package version create --package "Case Intelligence AI" --installation-key-bypass --wait 60 --target-dev-hub MyDevHub
+sf package version promote --package 04tAIVERSIONID --target-dev-hub MyDevHub --no-prompt
+```
+
+Install URL format:
+
+- Production orgs: `https://login.salesforce.com/packaging/installPackage.apexp?p0=04t...`
+- Sandbox orgs: `https://test.salesforce.com/packaging/installPackage.apexp?p0=04t...`
+
 ## Installation (Order Matters)
 
-If you deploy this repo as one source package, deploy all metadata together.
+This repo is configured for two unlocked packages:
 
-If you still split into multiple packages, install Foundation (Flow + Prompt templates) first, then the UI/Apex package.
+1. `Case Intelligence Core` (path: `force-app`)
+2. `Case Intelligence AI` (path: `force-app-ai`, depends on Core)
+
+Install Core first, then AI.
+
+For the easiest admin workflow, use:
+
+- Script: `scripts/install-core-and-ai.sh`
+- Walkthrough: `docs/INSTALL.md`
 
 Then:
 
@@ -96,7 +128,7 @@ Both components can be used together or independently. The sentiment indicator r
 ## Troubleshooting
 
 - **Flow not found (`Agentforce_Case_Classifier`)**  
-  Deploy the metadata from this repo and confirm Flow is active in the org.
+  Ensure the AI package is installed and the flow is active in the target org.
 - **No sentiment visible in indicator**  
   Confirm `Case.AI_Sentiment__c` is populated and user has field access.
 - **Unexpected no-op on Sub-Type**  

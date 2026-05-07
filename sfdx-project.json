@@ -3,9 +3,22 @@
     {
       "path": "force-app",
       "default": true,
-      "package": "Agentforce Case Intelligence",
-      "versionName": "ver 0.1",
-      "versionNumber": "0.2.0.NEXT"
+      "package": "Case Intelligence Core",
+      "versionName": "ver 1.0",
+      "versionNumber": "1.0.0.NEXT"
+    },
+    {
+      "path": "force-app-ai",
+      "default": false,
+      "package": "Case Intelligence AI",
+      "versionName": "ver 1.0",
+      "versionNumber": "1.0.0.NEXT",
+      "dependencies": [
+        {
+          "package": "Case Intelligence Core",
+          "versionNumber": "1.0.0.LATEST"
+        }
+      ]
     }
   ],
   "name": "Agentforce Case Intelligence",
@@ -13,8 +26,13 @@
   "sfdxNamespace": "sfdx",
   "sourceApiVersion": "61.0",
   "packageAliases": {
+    "Case Intelligence Core": "0HoKB000000GmaY0AS",
+    "Case Intelligence AI": "0HoKB000000Gmai0AC",
     "Agentforce Case Intelligence": "0HoKB000000GmaY0AS",
     "Agentforce Case Intelligence@0.1.0-2": "04tKB000000xXeRYAU",
-    "Agentforce Case Intelligence@0.2.0-1": "04tKB000000xXegYAE"
+    "Agentforce Case Intelligence@0.2.0-1": "04tKB000000xXegYAE",
+    "Case Intelligence Core@0.2.0-1": "04tKB000000xXegYAE",
+    "Case Intelligence Core@1.0.0-1": "04tKB000000xZJ0YAM",
+    "Case Intelligence Core@1.0.0-2": "04tKB000000xZJ5YAM"
   }
 }
