@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>used to get the email history</description>
+    <developerName>Case_Classifier_Prompt</developerName>
+    <masterLabel>Case_Classifier_Prompt</masterLabel>
+    <templateVersions>
+        <content>You are an experienced support analyst. Your task is to evaluate the following email history and classify the case accordingly.
+INSTRUCTIONS:
+Analyze the customer&apos;s request and sentiment.
+Assign the case to a &quot;Type&quot; from this exact list: [ {TYPE_OPTIONS} ]
+Assign the case to a &quot;Sub-Type&quot; from this exact list: [ {SUBTYPE_OPTIONS} ]
+Determine the Priority (Low, Medium, High, Critical) based on the urgency and impact described in the text.
+FORMAT:
+Respond EXCLUSIVELY as a raw JSON object.
+Do NOT use Markdown blocks (no ```json).
+Do NOT include any introductory or concluding text.
+The output must be parsable by a machine.
+REQUIRED JSON FIELDS:
+&quot;reason&quot;: (String) A short summary of the issue.
+&quot;priority&quot;: (String) Low, Medium, High, or Critical.
+&quot;type&quot;: (String) One value from the provided Type list.
+&quot;subType&quot;: (String) One value from the provided Sub-Type list.
+&quot;sentiment&quot;: (String) Positive, Neutral, Frustrated, or Angry.
+&quot;explanation&quot;: (String) A detailed reasoning for the classification to help the support agent.
+EMAIL HISTORY:
+{EMAIL_CONTEXT}
+</content>
+        <inputs>
+            <apiName>EmailText</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>EmailText</masterLabel>
+            <referenceName>Input:EmailText</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Text</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Text</masterLabel>
+            <referenceName>Input:Text</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>SubTypes</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>SubTypes</masterLabel>
+            <referenceName>Input:SubTypes</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGemini25Flash001</primaryModel>
+        <status>Published</status>
+    </templateVersions>
+    <templateVersions>
+        <content>You are an experienced support analyst. Your task is to evaluate the following email history and classify the case accordingly.
+INSTRUCTIONS:
+Analyze the customer&apos;s request and sentiment.
+Assign the case to a &quot;Type&quot; from this exact list: [ {!$Input:Text} ]
+Assign the case to a &quot;Sub-Type&quot; from this exact list: [ {!$Input:SubTypes} ]
+Determine the Priority (Low, Medium, High, Critical) based on the urgency and impact described in the text.
+FORMAT:
+Respond EXCLUSIVELY as a raw JSON object.
+Do NOT use Markdown blocks (no ```json).
+Do NOT include any introductory or concluding text.
+The output must be parsable by a machine.
+REQUIRED JSON FIELDS:
+&quot;reason&quot;: (String) A short summary of the issue.
+&quot;priority&quot;: (String) Low, Medium, High, or Critical.
+&quot;type&quot;: (String) One value from the provided Type list.
+&quot;subType&quot;: (String) One value from the provided Sub-Type list.
+&quot;sentiment&quot;: (String) Positive, Neutral, Frustrated, or Angry.
+&quot;explanation&quot;: (String) A detailed reasoning for the classification to help the support agent.
+EMAIL HISTORY:
+{!$Input:EmailText}
+</content>
+        <inputs>
+            <apiName>EmailText</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>EmailText</masterLabel>
+            <referenceName>Input:EmailText</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Text</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Text</masterLabel>
+            <referenceName>Input:Text</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>SubTypes</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>SubTypes</masterLabel>
+            <referenceName>Input:SubTypes</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGemini25Flash001</primaryModel>
+        <status>Published</status>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

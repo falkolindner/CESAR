@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Used to extract Tags from the Cases Subject and Description</description>
+    <developerName>Case_Tag_Extractor</developerName>
+    <masterLabel>Case Tag Extractor</masterLabel>
+    <templateVersions>
+        <content>You are a technical support analyst for an IT system. Your task is to extract the most important core technical concepts as standardized tags from the Subject and Description of a customer support ticket.
+These tags will be saved in a database to find similar cases later.
+RULES:
+Extract exactly 3 to a maximum of 7 tags.
+The tags must be short, concise, and technically relevant (e.g., &quot;Login&quot;, &quot;Timeout&quot;, &quot;Password Reset&quot;, &quot;Performance&quot;).
+Ignore filler words, names, greetings, signatures, and irrelevant emotional details (e.g., &quot;Hello&quot;, &quot;Customer&quot;, &quot;Angry&quot;, &quot;Urgent&quot;).
+ERROR CODES (CRITICAL): If a specific error code, error message, or ID is mentioned in the text (e.g., &quot;Error 500&quot;, &quot;ERR_CONNECTION_TIMED_OUT&quot;, &quot;ORA-00942&quot;), it MUST be extracted exactly as a separate tag. Always prefix this tag with &quot;Code: &quot; (e.g., &quot;Code: Error 500&quot;).
+Standardize terminology (e.g., use &quot;Login&quot; instead of &quot;Sign in&quot;, use &quot;Password&quot; instead of &quot;Passcode&quot;).
+Respond EXCLUSIVELY with a comma-separated list of tags. Do not include any explanations, introductory text, or bullet points.
+INPUT DATA:
+Subject: {!$Input:Case.Subject} Description: {!$Input:Case.Description}
+OUTPUT FORMAT:
+Tag1, Tag2, Tag3, Tag4
+</content>
+        <inputs>
+            <apiName>Case</apiName>
+            <definition>SOBJECT://Case</definition>
+            <masterLabel>Case</masterLabel>
+            <referenceName>Input:Case</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a technical support analyst for an IT system. Your task is to extract the most important core technical concepts as standardized tags from the Subject and Description of a customer support ticket.
+These tags will be saved in a database to find similar cases later.
+RULES:
+Extract exactly 3 to a maximum of 7 tags.
+The tags must be short, concise, and technically relevant (e.g., &quot;Login&quot;, &quot;Timeout&quot;, &quot;Password Reset&quot;, &quot;Performance&quot;).
+Ignore filler words, names, greetings, signatures, and irrelevant emotional details (e.g., &quot;Hello&quot;, &quot;Customer&quot;, &quot;Angry&quot;, &quot;Urgent&quot;).
+ERROR CODES (CRITICAL): If a specific error code, error message, or ID is mentioned in the text (e.g., &quot;Error 500&quot;, &quot;ERR_CONNECTION_TIMED_OUT&quot;, &quot;ORA-00942&quot;), it MUST be extracted exactly as a separate tag. Always prefix this tag with &quot;Code: &quot; (e.g., &quot;Code: Error 500&quot;).
+Standardize terminology (e.g., use &quot;Login&quot; instead of &quot;Sign in&quot;, use &quot;Password&quot; instead of &quot;Passcode&quot;).
+Respond EXCLUSIVELY with a comma-separated list of tags. Do not include any explanations, introductory text, or bullet points.
+INPUT DATA:
+Subject: {!$Input:Case.Subject} Description: {!$Input:Case.Description}
+OUTPUT FORMAT:
+Tag1, Tag2, Tag3, Tag4
+</content>
+        <inputs>
+            <apiName>Case</apiName>
+            <definition>SOBJECT://Case</definition>
+            <masterLabel>Case</masterLabel>
+            <referenceName>Input:Case</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultVertexAIGemini25Flash001</primaryModel>
+        <status>Published</status>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a technical support analyst for an IT system. Your task is to extract the most important core technical concepts as standardized tags from the Subject and Description of a customer support ticket.
+These tags will be saved in a database to find similar cases later.
+RULES:
+Extract exactly 3 to a maximum of 7 tags.
+The tags must be short, concise, and technically relevant (e.g., &quot;Login&quot;, &quot;Timeout&quot;, &quot;Password Reset&quot;, &quot;Performance&quot;).
+Ignore filler words, names, greetings, signatures, and irrelevant emotional details (e.g., &quot;Hello&quot;, &quot;Customer&quot;, &quot;Angry&quot;, &quot;Urgent&quot;).
+ERROR CODES (CRITICAL): If a specific error code, error message, or ID is mentioned in the text (e.g., &quot;Error 500&quot;, &quot;ERR_CONNECTION_TIMED_OUT&quot;, &quot;ORA-00942&quot;), it MUST be extracted exactly as a separate tag. Always prefix this tag with &quot;Code: &quot; (e.g., &quot;Code: Error 500&quot;).
+Standardize terminology (e.g., use &quot;Login&quot; instead of &quot;Sign in&quot;, use &quot;Password&quot; instead of &quot;Passcode&quot;).
+Respond EXCLUSIVELY with a comma-separated list of tags. Do not include any explanations, introductory text, or bullet points.
+INPUT DATA:
+Subject: {!$Input:Case.Subject} Description: {!$Input:Case.Description}
+OUTPUT FORMAT:
+Tag1, Tag2, Tag3, Tag4
+</content>
+        <inputs>
+            <apiName>Case</apiName>
+            <definition>SOBJECT://Case</definition>
+            <masterLabel>Case</masterLabel>
+            <referenceName>Input:Case</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT4Omni</primaryModel>
+        <status>Draft</status>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a technical support analyst for an IT system. Your task is to extract the most important core technical concepts as standardized tags from the Subject and Description of a customer support ticket.
+These tags will be saved in a database to find similar cases later.
+RULES:
+Extract exactly 3 to a maximum of 7 tags.
+The tags must be short, concise, and technically relevant (e.g., &quot;Login&quot;, &quot;Timeout&quot;, &quot;Password Reset&quot;, &quot;Performance&quot;).
+Ignore filler words, names, greetings, signatures, and irrelevant emotional details (e.g., &quot;Hello&quot;, &quot;Customer&quot;, &quot;Angry&quot;, &quot;Urgent&quot;).
+ERROR CODES (CRITICAL): If a specific error code, error message, or ID is mentioned in the text (e.g., &quot;Error 500&quot;, &quot;ERR_CONNECTION_TIMED_OUT&quot;, &quot;ORA-00942&quot;), it MUST be extracted exactly as a separate tag. Always prefix this tag with &quot;Code: &quot; (e.g., &quot;Code: Error 500&quot;).
+Standardize terminology (e.g., use &quot;Login&quot; instead of &quot;Sign in&quot;, use &quot;Password&quot; instead of &quot;Passcode&quot;).
+Respond EXCLUSIVELY with a comma-separated list of tags. Do not include any explanations, introductory text, or bullet points.
+INPUT DATA:
+Subject: {!$Input:Case.Subject} Description: {!$Input:Case.Description}
+OUTPUT FORMAT:
+Tag1, Tag2, Tag3, Tag4
+</content>
+        <inputs>
+            <apiName>Case</apiName>
+            <definition>SOBJECT://Case</definition>
+            <masterLabel>Case</masterLabel>
+            <referenceName>Input:Case</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT4Omni</primaryModel>
+        <status>Published</status>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a technical support analyst for an IT system. Your task is to extract the most important core technical concepts as standardized tags from the Subject and Description of a customer support ticket.
+These tags will be saved in a database to find similar cases later.
+RULES:
+- Extract exactly 3 to a maximum of 7 tags.
+- The tags must be short, concise, and technically relevant (e.g., &quot;Login&quot;, &quot;Timeout&quot;, &quot;Password Reset&quot;, &quot;Performance&quot;).
+- Ignore filler words, names, greetings, signatures, and irrelevant emotional details (e.g., &quot;Hello&quot;, &quot;Customer&quot;, &quot;Angry&quot;, &quot;Urgent&quot;).
+- ERROR CODES (CRITICAL): If a specific error code, error message, or ID is mentioned in the text, it MUST be extracted exactly as a separate tag. CRITICAL PREFIX RULE: You must prefix EVERY error tag with EXACTLY the word &quot;Error: &quot;. Do NOT translate this prefix! Do NOT use &quot;Fehlercode: &quot;, &quot;Fehlermeldung: &quot;, or &quot;Code: &quot;. Correct Example: &quot;Error: 0815&quot; or &quot;Error: 500&quot; Incorrect Example: &quot;Fehlercode 0815&quot;
+- Standardize terminology (e.g., use &quot;Login&quot; instead of &quot;Sign in&quot;, use &quot;Password&quot; instead of &quot;Passcode&quot;).
+- Respond EXCLUSIVELY with a comma-separated list of tags. Do not include any explanations, introductory text, or bullet points.
+INPUT DATA:
+Subject: {!$Input:Case.Subject} Description: {!$Input:Case.Description}
+OUTPUT FORMAT:
+Tag1, Tag2, Tag3, Tag4
+</content>
+        <inputs>
+            <apiName>Case</apiName>
+            <definition>SOBJECT://Case</definition>
+            <masterLabel>Case</masterLabel>
+            <referenceName>Input:Case</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT4Omni</primaryModel>
+        <status>Published</status>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>
